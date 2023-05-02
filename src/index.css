@@ -12,12 +12,20 @@ a, p, button, input {
   color: #E35640 !important;
 }
 
+.newletter-heading {
+  font-family: 'Dancing Script', cursive !important;
+}
+
 .border-color {
   border-color: #E35640 !important;
 }
 
 .bg-primary {
   background-color: #F9F6F6!important;
+}
+
+.bg-secondary {
+  background-color: #E35640  !important;
 }
 
 .brand-name {

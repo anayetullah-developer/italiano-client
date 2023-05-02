@@ -1,21 +1,19 @@
 import React from "react";
-import { Form } from "react-bootstrap";
+import { Col, Container, Form, Row } from "react-bootstrap";
 import { Link } from "react-router-dom";
 
 const Footer = () => {
   return (
-    <div className="bg-primary">
+    <div className="container">
       <div className="border-bottom py-5">
+        <h2 className="text-primary newletter-heading text-center">
+          Our Newsletter
+        </h2>
         <div className="w-50 mx-auto text-center">
-          <Link className="text-decoration-none">
-            <p className="brand-name m-0 text-dark">Italiano Delizioso</p>
-            <p className="text-uppercase tagline">Cooking for the soul</p>
-          </Link>
-          <p>
-            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ab beatae
-            nesciunt assumenda, molestias officiis numquam natus consequatur
-            dicta a aliquid!
-          </p>
+          <h2 className="text-center fst-italic">
+            Subscribe to our newsletter & keep up with our latest recipes and
+            organized workshops.
+          </h2>
           <Form>
             <Form.Group className="mb-3" controlId="formGroupEmail">
               <Form.Control
@@ -30,6 +28,15 @@ const Footer = () => {
           </p>
         </div>
       </div>
+
+      <Container className="my-5">
+        <Row>
+          <Col>1 of 3</Col>
+          <Col>2 of 3</Col>
+          <Col>3 of 3</Col>
+          <Col>3 of 3</Col>
+        </Row>
+      </Container>
       <div className="d-flex justify-content-between align-items-center container py-2">
         <p>
           <small>Privacy Policy</small>
