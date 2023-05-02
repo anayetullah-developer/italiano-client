@@ -1,9 +1,86 @@
 @import url('https://fonts.googleapis.com/css2?family=Dancing+Script&family=EB+Garamond:ital,wght@0,500;1,500&family=Raleway:ital,wght@0,400;0,600;1,400&display=swap');
 
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'EB Garamond', serif !important;
+}
 
+a, p, button {
+  font-family: 'Raleway', sans-serif !important;
+}
 
+.text-primary {
+  color: #E35640 !important;
+}
 
+.bg-primary {
+  background-color: #F9F6F6!important;
+}
 
+.brand-name {
+  font-family: 'EB Garamond', serif !important;
+  font-style: italic;
+  font-size: 36px;
+}
+
+.tagline {
+  font-size: 12px;
+  color: #E35640;
+  font-weight: 600;
+  letter-spacing: 4px;
+}
+
+.btn-outline-primary {
+  border: 1px solid #E35640;
+  color: #E35640;
+  background-color: transparent;
+  font-weight: 600;
+  font-size: 13px;
+}
+
+.btn-outline-primary:hover {
+  background-color: #E35640;
+  border: 1px solid #E35640;
+  color: #fff;
+  font-weight: 600;
+  font-size: 13px;
+}
+
+.btn-solid-primary {
+  border: none;
+  background-color: #E35640;
+  color: white;
+  font-weight: 600;
+  font-size: 13px;
+}
+
+.btn-solid-primary:hover {
+  border: none;
+  color: #fff;
+  background-color: #b33e2c;
+  font-weight: 600;
+  font-size: 13px;
+}
+
+.navbar-bg {
+  background-color: transparent !important;
+}
+
+.navlink {
+  letter-spacing: 2px;
+  font-size: 13px;
+  font-weight: 600;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+
+.profile-picture {
+  width: 40px;
+  height: 40px;
+}
+
+.footer-input[type="email"]:focus-within{
+  outline: none;
+}
 
 
 
