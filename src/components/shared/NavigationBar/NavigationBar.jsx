@@ -20,9 +20,9 @@ const NavigationBar = () => {
               style={{ maxHeight: "100px" }}
               navbarScroll
             >
-            <NavLink to="/" className={({ isActive }) => isActive ? 'navlink me-md-3 text-primary' : 'navlink me-md-3 text-dark'}>Home</NavLink>
-            <NavLink to="/blog" className={({ isActive }) => isActive ? 'navlink me-md-3 text-primary' : 'navlink me-md-3 text-dark'}>Blog</NavLink>
-            <NavLink to="/about" className={({ isActive }) => isActive ? 'navlink me-md-3 text-primary' : 'navlink me-md-3 text-dark'}>About</NavLink>
+            <NavLink to="/" className={({ isActive }) => isActive ? 'navlink me-md-4 mb-md-0 mb-2 text-primary' : 'navlink me-md-4 mb-md-0 mb-2 text-dark'}>Home</NavLink> 
+            <NavLink to="/blog" className={({ isActive }) => isActive ? 'navlink me-md-4 mb-md-0 mb-2 text-primary' : 'navlink me-md-4 mb-md-0 mb-2 text-dark'}>Blog</NavLink>
+            <NavLink to="/about" className={({ isActive }) => isActive ? 'navlink me-md-4 mb-md-0 mb-2 text-primary' : 'navlink me-md-4 mb-md-0 mb-2 text-dark'}>About</NavLink>
             </Nav>
             <Image src={profilePicture} className="profile-picture mx-md-3" roundedCircle />
               <Button className="btn btn-outline-primary d-block d-md-inline-block mt-3 mt-md-0">Login</Button>
