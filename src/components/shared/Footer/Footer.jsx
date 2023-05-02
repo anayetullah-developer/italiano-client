@@ -11,8 +11,7 @@ const Footer = () => {
         </h2>
         <div className="w-50 mx-auto text-center">
           <h2 className="text-center fst-italic">
-            Subscribe to our newsletter & keep up with our latest recipes and
-            organized workshops.
+            Subscribe to our newsletter & keep up with our latest recipes
           </h2>
           <Form>
             <Form.Group className="mb-3" controlId="formGroupEmail">
@@ -29,15 +28,40 @@ const Footer = () => {
         </div>
       </div>
 
-      <Container className="my-5">
-        <Row>
-          <Col>1 of 3</Col>
-          <Col>2 of 3</Col>
-          <Col>3 of 3</Col>
-          <Col>3 of 3</Col>
+      <Container className="mt-5 bg-primary p-5 border-bottom">
+        <Row className="d-flex flex-column flex-md-row justify-content-md-between align-items-md-start align-items-center">
+          <Col>
+          <h4 className="mb-2">Address</h4>
+          <div className="border w-25 border-secondary mb-3"></div>
+          <p className="mb-1">8500, Lorem Street, Chicago,</p>
+          <p className="mb-1">IL, 55030</p>
+          </Col>
+          <Col>
+            <h4 className="mb-2 mt-md-0 mt-3">Phone</h4>
+            <div className="border w-25 border-secondary mb-3"></div>
+            <p className="mb-1">Online Reservations</p>
+            <p className="mb-1">0 800 555 44 11</p>
+            <p className="mb-1">0 800 555 44 11</p>
+          </Col>
+          <Col>
+          <h4 className="mb-2 mt-md-0 mt-3">Working Hour</h4>
+            <div className="border w-25 border-secondary mb-3"></div>
+            <p className="mb-1">Lunch 11:30am – 2:30pm</p>
+            <p className="mb-1">Dinner 5:30am – 10pm</p>
+            <p className="mb-1">Sun. Brunch 10:30am – 2:30pm</p>
+            <p className="mb-1">Sun. Dinner 5:30pm – 10pm</p>
+            <p className="mb-1">Happy Hour</p>
+            <p className="mb-1">Mon-Fri 5pm – 7pm</p>
+          </Col>
+          <Col>
+            <h4 className="mb-2 mt-md-0 mt-3">Email</h4>
+              <div className="border w-25 border-secondary mb-3"></div>
+              <p className="mb-1">anaetullah7755@gmail.com</p>
+              <p className="mb-1">anaetullah7755@gmail.com</p> className="mb-1"
+          </Col>
         </Row>
       </Container>
-      <div className="d-flex justify-content-between align-items-center container py-2">
+      <div className="d-flex justify-content-between align-items-center container py-2 bg-primary">
         <p>
           <small>Privacy Policy</small>
         </p>
