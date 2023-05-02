@@ -2,6 +2,7 @@ import React from "react";
 import { Card, Carousel, Col, Row } from "react-bootstrap";
 import { FaRegThumbsUp } from 'react-icons/fa';
 import cimage1 from '../../assets/c1.jpg';
+import { Link } from "react-router-dom";
 
 const Home = () => {
   return (
@@ -57,7 +58,7 @@ const Home = () => {
                 <p className="mb-1"><small><span className="fw-bold">Recipies:</span> 2</small></p>
                 <p className="mb-1"><small> <span className="fw-bold">Experiences:</span> 4 Years</small></p>
                 <p className="mb-1"><FaRegThumbsUp className="text-primary"/> 200+</p>
-                <button className="btn btn-solid-primary">View Recipies</button>
+                <Link to="/recipe"><button className="btn btn-solid-primary">View Recipies</button></Link>
               </Card.Text>
             </Card.Body>
           </Card>

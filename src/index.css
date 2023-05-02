@@ -12,6 +12,10 @@ a, p, button, input {
   color: #E35640 !important;
 }
 
+.border-color {
+  border-color: #E35640 !important;
+}
+
 .bg-primary {
   background-color: #F9F6F6!important;
 }

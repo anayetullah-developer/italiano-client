@@ -35,7 +35,7 @@ const Footer = () => {
           <small>Privacy Policy</small>
         </p>
         <p>
-          <small>Italiano Delizioso &copy; All rights reserved</small>
+          <small>&copy; All rights reserved</small>
         </p>
       </div>
     </div>
