@@ -2,9 +2,10 @@ import React, { useContext, useState } from 'react';
 import { Button, Form } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../../providers/AuthProvider';
+import { FaGithub, FaGoogle } from 'react-icons/fa';
 
 const Login = () => {
-    const {loginUser} = useContext(AuthContext);
+    const {loginUser, loginWithGoogle} = useContext(AuthContext);
     const [error, setError] = useState('');
 
     const loginHandler = (e) => {
@@ -24,6 +25,34 @@ const Login = () => {
             console.log(errorMessage);
             setError(errorMessage);
           });      
+    }
+
+    const handleGithubSignIn = () => {
+       
+    }
+
+    const handleGoogleSignIn = () => {
+        
+        loginWithGoogle()
+        .then((result) => {
+            // // This gives you a Google Access Token. You can use it to access the Google API.
+            // const credential = GoogleAuthProvider.credentialFromResult(result);
+            // const token = credential.accessToken;
+            // // The signed-in user info.
+            const user = result.user;
+            // // IdP data available using getAdditionalUserInfo(result)
+            // // ...
+          }).catch((error) => {
+            // // Handle Errors here.
+            // const errorCode = error.code;
+            const errorMessage = error.message;
+            setError(errorMessage);
+            // // The email of the user's account used.
+            // const email = error.customData.email;
+            // // The AuthCredential type that was used.
+            // const credential = GoogleAuthProvider.credentialFromError(error);
+            // // ...
+          });
     }
 
     return (
@@ -57,6 +86,14 @@ const Login = () => {
                 We'll never share your email with anyone else.
                 </Form.Text> */}
             </Form>
+            <div>
+            <Button variant="primary" type="submit" className='mb-2 btn btn-primary text-white' onClick={handleGoogleSignIn}>
+               <FaGoogle/> Login with google
+            </Button> <br/>
+            <Button variant="primary" type="submit" className='mb-2 btn btn-dark text-white' onClick={handleGithubSignIn}>
+            <FaGithub/> Login with github
+            </Button> <br/>
+            </div>
       </div>
 
     );
