@@ -1,10 +1,22 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Button, Container, Nav, Navbar } from "react-bootstrap";
-import Image from 'react-bootstrap/Image';
-import profilePicture from '../../../assets/anayet.jpg';
+import Image from "react-bootstrap/Image";
+import profilePicture from "../../../assets/anayet.jpg";
 import { Link, NavLink } from "react-router-dom";
+import { AuthContext } from "../../../providers/AuthProvider";
 
 const NavigationBar = () => {
+  const { user, logoutUser } = useContext(AuthContext);
+
+  const handleLogout = () => {
+    logoutUser()
+    .then(() => {
+      // Sign-out successful.
+    }).catch((error) => {
+      // An error happened.
+    });
+
+  }
   return (
     <>
       <Navbar bg="light" className="navbar-bg" expand="lg">
@@ -12,7 +24,7 @@ const NavigationBar = () => {
           <Navbar.Brand href="#">
             <p className="brand-name m-0">Italiano Delizioso</p>
             <p className="text-uppercase tagline">Cooking for the soul</p>
-            </Navbar.Brand>
+          </Navbar.Brand>
           <Navbar.Toggle aria-controls="navbarScroll" />
           <Navbar.Collapse id="navbarScroll">
             <Nav
@@ -20,16 +32,58 @@ const NavigationBar = () => {
               style={{ maxHeight: "100px" }}
               navbarScroll
             >
-            <NavLink to="/" className={({ isActive }) => isActive ? 'navlink me-md-4 mb-md-0 mb-2 text-primary' : 'navlink me-md-4 mb-md-0 mb-2 text-dark'}>Home</NavLink> 
-            <NavLink to="/blog" className={({ isActive }) => isActive ? 'navlink me-md-4 mb-md-0 mb-2 text-primary' : 'navlink me-md-4 mb-md-0 mb-2 text-dark'}>Blog</NavLink>
-            <NavLink to="/about" className={({ isActive }) => isActive ? 'navlink me-md-4 mb-md-0 mb-2 text-primary' : 'navlink me-md-4 mb-md-0 mb-2 text-dark'}>About</NavLink>
+              <NavLink
+                to="/"
+                className={({ isActive }) =>
+                  isActive
+                    ? "navlink me-md-4 mb-md-0 mb-2 text-primary"
+                    : "navlink me-md-4 mb-md-0 mb-2 text-dark"
+                }
+              >
+                Home
+              </NavLink>
+              <NavLink
+                to="/blog"
+                className={({ isActive }) =>
+                  isActive
+                    ? "navlink me-md-4 mb-md-0 mb-2 text-primary"
+                    : "navlink me-md-4 mb-md-0 mb-2 text-dark"
+                }
+              >
+                Blog
+              </NavLink>
+              <NavLink
+                to="/about"
+                className={({ isActive }) =>
+                  isActive
+                    ? "navlink me-md-4 mb-md-0 mb-2 text-primary"
+                    : "navlink me-md-4 mb-md-0 mb-2 text-dark"
+                }
+              >
+                About
+              </NavLink>
             </Nav>
-            <Image src={profilePicture} className="profile-picture mx-md-3" roundedCircle />
-             <Link to="/login"> <Button className="btn btn-outline-primary d-block d-md-inline-block mt-3 mt-md-0">Login</Button></Link>
+            {user ? (
+              <>
+                <Image
+                  src={profilePicture}
+                  className="profile-picture mx-md-3"
+                  roundedCircle
+                />
+                <Button className="btn btn-outline-primary d-block d-md-inline-block mt-3 mt-md-0" onClick={handleLogout}>
+                  Logout
+                </Button>
+              </>
+            ) : (
+              <Link to="/login">
+                <Button className="btn btn-outline-primary d-block d-md-inline-block mt-3 mt-md-0">
+                  Login
+                </Button>
+              </Link>
+            )}
           </Navbar.Collapse>
         </Container>
       </Navbar>
-      
     </>
   );
 };
