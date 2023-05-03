@@ -5,6 +5,7 @@ import RecipePage from '../layouts/RecipePage';
 import LoginPage from '../layouts/LoginPage';
 import Registration from '../components/Login/Registration';
 import Login from '../components/Login/Login';
+import Error from '../components/Error/Error';
 
 const router = createBrowserRouter([
     {
@@ -33,6 +34,11 @@ const router = createBrowserRouter([
         path: "/recipe",
         element: <RecipePage/>
     },
+
+    {
+        path: "/*",
+        element: <Error/>,
+    }
 
 ])
 
