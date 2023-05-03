@@ -1,5 +1,5 @@
 import React from "react";
-import { Card, CardGroup, Carousel, Col, Row } from "react-bootstrap";
+import { Card, CardGroup, Carousel, Col, Form, Row } from "react-bootstrap";
 import { FaRegThumbsUp } from "react-icons/fa";
 import cimage1 from "../../assets/c1.jpg";
 import { Link } from "react-router-dom";
@@ -42,7 +42,7 @@ const Home = () => {
               <Card.Img variant="top" src={cimage1} />
               <Card.Body>
                 <Card.Title>Anayet Ullah</Card.Title>
-                <Card.Text>
+                <div>
                   <p className="mb-1">
                     <small>
                       <span className="fw-bold">Recipies:</span> 2
@@ -62,7 +62,7 @@ const Home = () => {
                       View Recipies
                     </button>
                   </Link>
-                </Card.Text>
+                </div>
               </Card.Body>
             </Card>
           </Col>
@@ -122,6 +122,28 @@ const Home = () => {
             </div>
           </Card>
         </CardGroup>
+      </div>
+      <div className="border-bottom py-5">
+        <h2 className="text-primary newletter-heading text-center">
+          Our Newsletter
+        </h2>
+        <div className="w-50 mx-auto text-center">
+          <h2 className="text-center fst-italic">
+            Subscribe to our newsletter & keep up with our latest recipes
+          </h2>
+          <Form>
+            <Form.Group className="mb-3" controlId="formGroupEmail">
+              <Form.Control
+                className="footer-input border-0 border-bottom outline w-75 mx-auto text-center bg-transparent border-secondary rounded-0"
+                type="email"
+                placeholder="Enter your email"
+              />
+            </Form.Group>
+          </Form>
+          <p className="fst-italic">
+            <small>Be informed about the latest recipes & workshops.</small>
+          </p>
+        </div>
       </div>
     </div>
   );

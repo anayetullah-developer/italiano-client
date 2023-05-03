@@ -12,7 +12,7 @@ const ChefRecipe = () => {
       <div className="container my-5">
         <Card className="bg-primary p-4 border-0">
           <Card.Body className="border border-color">
-            <Card.Text>
+            <div>
               <Container>
                 <Row className="d-flex flex-column flex-md-row justify-content-md-between align-items-center py-5">
                   <Col className="text-center">
@@ -57,14 +57,14 @@ const ChefRecipe = () => {
                   </Col>
                 </Row>
               </Container>
-            </Card.Text>
+            </div>
           </Card.Body>
         </Card>
       </div>
 
       <div className="container mb-5">
         <CardGroup>
-          <Card>
+        <Card>
             <Card.Img variant="top" src={rImg1} />
             <Card.Body>
               <Card.Title>AntiPasti Mixed</Card.Title>
@@ -84,7 +84,7 @@ const ChefRecipe = () => {
                 longer.
               </Card.Text>
             </Card.Body>
-            <Card.Footer className="d-flex justify-content-between">
+            <Card.Footer className="d-flex justify-content-between bg-primary">
               <p>
                 <FaStar />
                 <FaStar />
@@ -117,42 +117,7 @@ const ChefRecipe = () => {
                 longer.
               </Card.Text>
             </Card.Body>
-            <Card.Footer className="d-flex justify-content-between">
-              <p>
-                <FaStar />
-                <FaStar />
-                <FaStar />
-                <FaStar />
-                <FaStar />
-              </p>
-              <p>
-                <FaHeart />
-              </p>
-            </Card.Footer>
-          </Card>
-        </CardGroup>
-        <CardGroup>
-          <Card>
-            <Card.Img variant="top" src={rImg1} />
-            <Card.Body>
-              <Card.Title>AntiPasti Mixed</Card.Title>
-              <h5>Ingradients</h5>
-              <ul>
-                <li>one two three four five</li>
-                <li>one two three four five</li>
-                <li>one two three four five</li>
-                <li>one two three four five</li>
-                <li>one two three four five</li>
-                <li>one two three four five</li>
-              </ul>
-              <h5>Preparation</h5>
-              <Card.Text>
-                This is a wider card with supporting text below as a natural
-                lead-in to additional content. This content is a little bit
-                longer.
-              </Card.Text>
-            </Card.Body>
-            <Card.Footer className="d-flex justify-content-between">
+            <Card.Footer className="d-flex justify-content-between bg-primary">
               <p>
                 <FaStar />
                 <FaStar />
@@ -185,7 +150,7 @@ const ChefRecipe = () => {
                 longer.
               </Card.Text>
             </Card.Body>
-            <Card.Footer className="d-flex justify-content-between">
+            <Card.Footer className="d-flex justify-content-between bg-primary">
               <p>
                 <FaStar />
                 <FaStar />

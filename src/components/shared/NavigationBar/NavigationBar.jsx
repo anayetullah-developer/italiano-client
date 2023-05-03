@@ -2,7 +2,7 @@ import React from "react";
 import { Button, Container, Nav, Navbar } from "react-bootstrap";
 import Image from 'react-bootstrap/Image';
 import profilePicture from '../../../assets/anayet.jpg';
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 
 const NavigationBar = () => {
   return (
@@ -25,7 +25,7 @@ const NavigationBar = () => {
             <NavLink to="/about" className={({ isActive }) => isActive ? 'navlink me-md-4 mb-md-0 mb-2 text-primary' : 'navlink me-md-4 mb-md-0 mb-2 text-dark'}>About</NavLink>
             </Nav>
             <Image src={profilePicture} className="profile-picture mx-md-3" roundedCircle />
-              <Button className="btn btn-outline-primary d-block d-md-inline-block mt-3 mt-md-0">Login</Button>
+             <Link to="/login"> <Button className="btn btn-outline-primary d-block d-md-inline-block mt-3 mt-md-0">Login</Button></Link>
           </Navbar.Collapse>
         </Container>
       </Navbar>

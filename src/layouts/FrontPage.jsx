@@ -6,9 +6,7 @@ import Home from '../components/Home/Home';
 const FrontPage = () => {
     return (
         <>
-          <NavigationBar/>
             <Home/>
-          <Footer/>
         </>
     );
 };
