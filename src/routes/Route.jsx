@@ -6,6 +6,7 @@ import LoginPage from '../layouts/LoginPage';
 import Registration from '../components/Login/Registration';
 import Login from '../components/Login/Login';
 import Error from '../components/Error/Error';
+import BlogPage from '../layouts/BlogPage';
 
 const router = createBrowserRouter([
     {
@@ -14,7 +15,8 @@ const router = createBrowserRouter([
         children: [
             {
                 path: "/",
-                element: <FrontPage/>
+                element: <FrontPage/>,
+                loader: () => fetch('http://localhost:5000/chefs')
             },
 
             {
@@ -31,14 +33,21 @@ const router = createBrowserRouter([
     },
 
     {
-        path: "/recipe",
-        element: <RecipePage/>
+        path: "/recipe/:id",
+        element: <RecipePage/>,
+        loader: ({params}) => fetch(`http://localhost:5000/chefs/${params.id}`)
     },
+
+    {
+        path: "/blog",
+        element: <BlogPage/>
+    },
+
 
     {
         path: "/*",
         element: <Error/>,
-    }
+    },
 
 ])
 

@@ -5,7 +5,7 @@ import { AuthContext } from '../../providers/AuthProvider';
 import { FaGithub, FaGoogle } from 'react-icons/fa';
 
 const Login = () => {
-    const {loginUser, loginWithGoogle} = useContext(AuthContext);
+    const {loginUser, loginWithGoogle, loginWithGithub} = useContext(AuthContext);
     const [error, setError] = useState('');
 
     const loginHandler = (e) => {
@@ -28,30 +28,27 @@ const Login = () => {
     }
 
     const handleGithubSignIn = () => {
-       
+        loginWithGithub()
+        .then((result) => {
+            const user = result.user;
+          
+          }).catch((error) => {
+            const errorMessage = error.message;
+            setError(errorMessage);
+           
+          });
     }
 
     const handleGoogleSignIn = () => {
         
         loginWithGoogle()
         .then((result) => {
-            // // This gives you a Google Access Token. You can use it to access the Google API.
-            // const credential = GoogleAuthProvider.credentialFromResult(result);
-            // const token = credential.accessToken;
-            // // The signed-in user info.
             const user = result.user;
-            // // IdP data available using getAdditionalUserInfo(result)
-            // // ...
+          
           }).catch((error) => {
-            // // Handle Errors here.
-            // const errorCode = error.code;
             const errorMessage = error.message;
             setError(errorMessage);
-            // // The email of the user's account used.
-            // const email = error.customData.email;
-            // // The AuthCredential type that was used.
-            // const credential = GoogleAuthProvider.credentialFromError(error);
-            // // ...
+           
           });
     }
 

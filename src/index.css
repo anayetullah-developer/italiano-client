@@ -8,6 +8,10 @@ a, p, button, input {
   font-family: 'Raleway', sans-serif !important;
 }
 
+a {
+  text-decoration: none;
+}
+
 button {
   font-weight: 600 !important;
   font-size: 15px !important;
@@ -93,6 +97,15 @@ button {
 .profile-picture {
   width: 40px;
   height: 40px;
+}
+
+.carousel-image {
+  height: 400px;
+  mix-blend-mode: darken;
+}
+
+.carousel-bg {
+  background-color: rgba(0, 0, 0, 0.5) !important;
 }
 
 .footer-input[type="email"]:focus-within{

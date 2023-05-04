@@ -60,7 +60,7 @@ const NavigationBar = () => {
                     : "navlink me-md-4 mb-md-0 mb-2 text-dark"
                 }
               >
-                About
+                Recepies
               </NavLink>
             </Nav>
             {user ? (
