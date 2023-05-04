@@ -8,7 +8,7 @@ const Login = () => {
     const {loginUser, loginWithGoogle, loginWithGithub, loading} = useContext(AuthContext);
     const [error, setError] = useState('');
     const navigate = useNavigate();
-    
+
     const location = useLocation();
     const from = location?.state?.from?.pathname || "/";
 

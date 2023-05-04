@@ -1,22 +1,25 @@
 import React, { useContext } from "react";
-import { Button, Container, Nav, Navbar } from "react-bootstrap";
+import { Button, Container, Nav, Navbar, Spinner } from "react-bootstrap";
 import Image from "react-bootstrap/Image";
 import profilePicture from "../../../assets/anayet.jpg";
 import { Link, NavLink } from "react-router-dom";
 import { AuthContext } from "../../../providers/AuthProvider";
+import { FaUserTie } from "react-icons/fa";
 
 const NavigationBar = () => {
-  const { user, logoutUser } = useContext(AuthContext);
+  const { user, logoutUser, loading } = useContext(AuthContext);
+
+  console.log(user);
 
   const handleLogout = () => {
     logoutUser()
-    .then(() => {
-      // Sign-out successful.
-    }).catch((error) => {
-      // An error happened.
-    });
-
-  }
+      .then(() => {
+        // Sign-out successful.
+      })
+      .catch((error) => {
+        // An error happened.
+      });
+  };
   return (
     <>
       <Navbar bg="light" className="navbar-bg" expand="lg">
@@ -63,16 +66,31 @@ const NavigationBar = () => {
                 Recepies
               </NavLink>
             </Nav>
-            {user ? (
+            {loading ? (
+              <div className="d-flex justify-content-center align-items-center mt-5 text-primary">
+                <Spinner className="" animation="border" />
+              </div>
+            ) : user ? (
               <>
-                <Image
-                  src={profilePicture}
-                  className="profile-picture mx-md-3"
-                  roundedCircle
-                />
-                <Button className="btn btn-outline-primary d-block d-md-inline-block mt-3 mt-md-0" onClick={handleLogout}>
-                  Logout
+                {!user.photoURL ? (
+                  <FaUserTie className="user me-md-3" />
+                ) : (
+                  <Image
+                    src={user.photoURL}
+                    className="profile-picture mx-md-3"
+                    roundedCircle
+                    title={user.displayName ? user.displayName : ""}
+                  />
+                )}
+
+                <Link to="/login">
+                <Button
+                  className="btn btn-outline-primary d-block d-md-inline-block mt-3 mt-md-0"
+                  onClick={handleLogout}
+                >
+                  Log out
                 </Button>
+                </Link>
               </>
             ) : (
               <Link to="/login">
