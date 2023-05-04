@@ -2,38 +2,47 @@ import React, { createContext, useEffect, useState } from 'react';
 import app from '../firebase/firebase.config';
 import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, onAuthStateChanged, signOut, signInWithPopup, GithubAuthProvider } from "firebase/auth";
 import { GoogleAuthProvider } from "firebase/auth";
+import { useNavigate } from 'react-router-dom';
 
 export const AuthContext = createContext();
 const auth = getAuth(app);
 const googleProvider = new GoogleAuthProvider();
-const gitProvider = new GithubAuthProvider()
+const gitProvider = new GithubAuthProvider();
 
 const AuthProvider = ({children}) => {
     const [user, setUser] = useState(null);
+    const [loading, setLoading] =useState(true)
 
     const loginWithGoogle = () => {
-        signInWithPopup(auth, googleProvider)
+        setLoading(true)
+        return signInWithPopup(auth, googleProvider)
       };
 
     const loginWithGithub = () => {
-        signInWithPopup(auth, gitProvider)
+        setLoading(true)
+        return signInWithPopup(auth, gitProvider)
+
       };
 
     const registerUser = (email, password) => {
+        setLoading(true)
         return createUserWithEmailAndPassword(auth, email, password)
     }
 
     const loginUser = (email, password) => {
+        setLoading(true)
         return signInWithEmailAndPassword(auth, email, password)
     }
 
     const logoutUser = () => {
+        setLoading(true)
         signOut(auth)
     }
 
     useEffect(() => {
         const unsubscribe = onAuthStateChanged(auth, loggedUser => {
             setUser(loggedUser);
+            setLoading(false)
         })
 
         return () => {
@@ -49,6 +58,7 @@ const AuthProvider = ({children}) => {
         loginWithGoogle,
         loginWithGithub,
         user,
+        loading
     };
 
     return (

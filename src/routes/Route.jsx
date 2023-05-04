@@ -7,35 +7,35 @@ import Registration from '../components/Login/Registration';
 import Login from '../components/Login/Login';
 import Error from '../components/Error/Error';
 import BlogPage from '../layouts/BlogPage';
+import PrivateRoute from './PrivateRoute';
 
 const router = createBrowserRouter([
     {
         path: "/",
+        element: <FrontPage/>,
+        loader: () => fetch('http://localhost:5001/chefs')
+    },
+
+    {
+        path: "/login",
         element: <LoginPage/>,
         children: [
-            {
-                path: "/",
-                element: <FrontPage/>,
-                loader: () => fetch('http://localhost:5000/chefs')
-            },
-
             {
                 path: "/login",
                 element: <Login/>
             },
 
             {
-                path: "/registration",
+                path: "/login/registration",
                 element: <Registration/>
             }
-    ]
-       
+        ]
     },
 
     {
         path: "/recipe/:id",
-        element: <RecipePage/>,
-        loader: ({params}) => fetch(`http://localhost:5000/chefs/${params.id}`)
+        element: <PrivateRoute><RecipePage/></PrivateRoute>,
+        loader: ({params}) => fetch(`http://localhost:5001/chefs/${params.id}`)
     },
 
     {

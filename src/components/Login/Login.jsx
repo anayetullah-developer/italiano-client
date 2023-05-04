@@ -1,12 +1,16 @@
 import React, { useContext, useState } from 'react';
 import { Button, Form } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../providers/AuthProvider';
 import { FaGithub, FaGoogle } from 'react-icons/fa';
 
 const Login = () => {
-    const {loginUser, loginWithGoogle, loginWithGithub} = useContext(AuthContext);
+    const {loginUser, loginWithGoogle, loginWithGithub, loading} = useContext(AuthContext);
     const [error, setError] = useState('');
+    const navigate = useNavigate();
+    
+    const location = useLocation();
+    const from = location?.state?.from?.pathname || "/";
 
     const loginHandler = (e) => {
         e.preventDefault();
@@ -18,19 +22,24 @@ const Login = () => {
         loginUser(email, password)
         .then((userCredential) => {
             const user = userCredential.user;
-            console.log(user);
+            navigate(from, {replace: true})
           })
           .catch((error) => {
             const errorMessage = error.message;
-            console.log(errorMessage);
             setError(errorMessage);
           });      
     }
 
     const handleGithubSignIn = () => {
+        if(loading) {
+            return  <div className="d-flex justify-content-center align-items-center mt-5 text-primary"><Spinner className="" animation="border" /></div>
+        }
         loginWithGithub()
         .then((result) => {
             const user = result.user;
+            if(result) {
+                navigate(from, {replace: true})
+            }
           
           }).catch((error) => {
             const errorMessage = error.message;
@@ -44,6 +53,7 @@ const Login = () => {
         loginWithGoogle()
         .then((result) => {
             const user = result.user;
+            navigate(from, {replace: true})
           
           }).catch((error) => {
             const errorMessage = error.message;
@@ -71,7 +81,7 @@ const Login = () => {
                 Login
             </Button> <br/>
             <Form.Text className="text-muted ms-2">
-                Do not have an account? <Link to="/registration">Register</Link>
+                Do not have an account? <Link to="/login/registration">Register</Link>
             </Form.Text>
             <Form.Text className="text-danger d-block">
                {error}
