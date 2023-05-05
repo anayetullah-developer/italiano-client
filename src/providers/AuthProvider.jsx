@@ -1,6 +1,6 @@
 import React, { createContext, useEffect, useState } from 'react';
 import app from '../firebase/firebase.config';
-import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, onAuthStateChanged, signOut, signInWithPopup, GithubAuthProvider } from "firebase/auth";
+import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, onAuthStateChanged, signOut, signInWithPopup, GithubAuthProvider, updateProfile } from "firebase/auth";
 import { GoogleAuthProvider } from "firebase/auth";
 import { useNavigate } from 'react-router-dom';
 
@@ -29,6 +29,12 @@ const AuthProvider = ({children}) => {
         return createUserWithEmailAndPassword(auth, email, password)
     }
 
+    const updateUser = (name, photoURL) => {
+        return updateProfile(auth.currentUser, {
+            displayName: name, photoURL: photoURL
+          })
+    }
+
     const loginUser = (email, password) => {
         setLoading(true)
         return signInWithEmailAndPassword(auth, email, password)
@@ -36,7 +42,7 @@ const AuthProvider = ({children}) => {
 
     const logoutUser = () => {
         setLoading(true)
-        signOut(auth)
+        return signOut(auth)
     }
 
     useEffect(() => {
@@ -53,6 +59,7 @@ const AuthProvider = ({children}) => {
 
     const authInfo = {
         registerUser,
+        updateUser,
         loginUser,
         logoutUser,
         loginWithGoogle,

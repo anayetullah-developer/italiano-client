@@ -1,18 +1,19 @@
 import React, { useContext, useState } from "react";
 import { Button, Form } from "react-bootstrap";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../providers/AuthProvider";
+import { FaEye } from "react-icons/fa";
 
 const Registration = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [Emailerror, setEmailError] = useState('');
   const [PasswordError, setPasswordError] = useState('');
-  const [Emailsuccess, setEmailSuccess] = useState('');
-  const [passwordSuccess, setPasswordSuccess] = useState('');
+  const [success, setSuccess] = useState('');
 
-  const {registerUser} = useContext(AuthContext);
-
+  const navigation = useNavigate();
+  const {registerUser, updateUser, user} = useContext(AuthContext);
+  
   const emailHandler = (e) => {
     const emailInput = e.target.value;
 
@@ -30,7 +31,7 @@ const Registration = () => {
     const passwordInput = e.target.value;
     setPassword(passwordInput);
 
-    const regex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{7,}$/;
+    const regex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[^\s]{8,}$/;
     if(!regex.test(password)) {
       setPasswordError('Password should contain at least one lowercase, one uppercase, one number and one special character (@$!%*?&)')
     }else {
@@ -42,7 +43,7 @@ const Registration = () => {
     e.preventDefault();
     const form = e.target;
     const name = form.name.value;
-    const photoUrl = form.photo.value;
+    const photoURL = form.photo.value;
 
     if(Emailerror) {
       form.email.focus();
@@ -54,20 +55,26 @@ const Registration = () => {
     
     registerUser(email, password)
     .then((userCredential) => {
-      const user = userCredential.user;
-      console.log(user);
+      setSuccess('Congratulations! You have successfully registered');
+      navigation("/login")
     })
     .catch((error) => {
-      const errorMessage = error.message;
-      console.log(errorMessage);
     });
+
+    updateUser(name, photoURL)
+    .then(() => {   
+    }).catch((error) => {
+    
+  });
+
+  
 
   } 
 
 
   return (
-    <div className="mx-auto w-50">
-      <Form onSubmit={submitHandler}>
+    <div className="mx-auto container">
+      <Form className="w-75 mx-auto" onSubmit={submitHandler}>
         <Form.Group className="mb-3" controlId="">
           <Form.Label>Name</Form.Label>
           <Form.Control
@@ -92,13 +99,11 @@ const Registration = () => {
             type="email"
             className={Emailerror ? 'border-danger' : ''}
             required
-            value={email}
-            onInput={emailHandler}
-            onBlur={emailHandler}
+            onKeyDown={emailHandler}
             name="email"
             placeholder="Enter email"
           />
-          <Form.Text className="text-warning">
+          <Form.Text className="text-primary">
             {Emailerror}
           </Form.Text>
         </Form.Group>
@@ -108,13 +113,12 @@ const Registration = () => {
             className={PasswordError ? 'border-danger' : ''}
             type="password"
             required
-            value={password}
-            onInput={passwordHandler}
-            onBlur={passwordHandler}
+            onKeyDown={passwordHandler}
             name="password"
             placeholder="Enter Password"
-          />
-          <Form.Text className="text-warning">
+          /> 
+          
+          <Form.Text className="text-danger">
             {PasswordError}
           </Form.Text>
         </Form.Group>
@@ -128,17 +132,14 @@ const Registration = () => {
         <Button variant="primary" type="submit" className="mb-2 btn btn-solid-primary text-white">
           Register
         </Button>
+        <p className="text-success">
+            {success}
+          </p>
         <br />
         <Form.Text className="text-muted ms-2">
           Already have an account? <Link to="/login">Login</Link>
         </Form.Text>
         <Form.Group className="mb-3" controlId="5"></Form.Group>
-        {/* <Form.Text className="text-muted">
-            We'll never share your email with anyone else.
-          </Form.Text> 
-          <Form.Text className="text-muted">
-            We'll never share your email with anyone else.
-          </Form.Text> */}
       </Form>
     </div>
   );

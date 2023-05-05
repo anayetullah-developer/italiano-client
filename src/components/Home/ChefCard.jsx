@@ -1,15 +1,18 @@
 import React from "react";
 import { Card, Col, Container, Row } from "react-bootstrap";
 import { FaRegThumbsUp } from "react-icons/fa";
+import LazyLoad from "react-lazy-load";
 import { Link } from "react-router-dom";
 
 const ChefCard = ({ selectedData }) => {
   const {id, chefImg, chefName, experience, likes, numberOfRecipies } = selectedData;
-
+  const Placeholder = () => (
+    <div style={{ height: '250px', backgroundColor: '#ccc' }}>Loading...</div>
+  );
   return (
         <Col md={4} className="mb-md-4">
           <Card>
-            <Card.Img style={{height: '250px'}} variant="top" src={chefImg} />
+            <LazyLoad height={250} offset={100}><Card.Img style={{height: '250px'}} variant="top" src={chefImg} /></LazyLoad>
             <Card.Body>
               <Card.Title>{chefName}</Card.Title>
               <div>

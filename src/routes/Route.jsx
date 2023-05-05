@@ -13,7 +13,7 @@ const router = createBrowserRouter([
     {
         path: "/",
         element: <FrontPage/>,
-        loader: () => fetch('http://localhost:5001/chefs')
+        loader: () => fetch('https://italiano-delizioso-server.vercel.app/chefs')
     },
 
     {
@@ -35,7 +35,7 @@ const router = createBrowserRouter([
     {
         path: "/recipe/:id",
         element: <PrivateRoute><RecipePage/></PrivateRoute>,
-        loader: ({params}) => fetch(`http://localhost:5001/chefs/${params.id}`)
+        loader: ({params}) => fetch(`https://italiano-delizioso-server.vercel.app/chefs/${params.id}`)
     },
 
     {

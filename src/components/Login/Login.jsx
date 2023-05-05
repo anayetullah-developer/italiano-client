@@ -21,7 +21,6 @@ const Login = () => {
 
         loginUser(email, password)
         .then((userCredential) => {
-            const user = userCredential.user;
             navigate(from, {replace: true})
           })
           .catch((error) => {
@@ -31,12 +30,9 @@ const Login = () => {
     }
 
     const handleGithubSignIn = () => {
-        if(loading) {
-            return  <div className="d-flex justify-content-center align-items-center mt-5 text-primary"><Spinner className="" animation="border" /></div>
-        }
+      
         loginWithGithub()
         .then((result) => {
-            const user = result.user;
             if(result) {
                 navigate(from, {replace: true})
             }
@@ -63,8 +59,8 @@ const Login = () => {
     }
 
     return (
-        <div className='container w-50 mx-auto'>
-            <Form onSubmit={loginHandler}>
+        <div className='container w-75 mx-auto'>
+            <Form className='' onSubmit={loginHandler}>
             <Form.Group className="mb-3" controlId="1">
                 <Form.Label>Email address</Form.Label>
                 <Form.Control type="email" required name='email' placeholder="Enter email" />

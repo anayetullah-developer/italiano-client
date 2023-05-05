@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { Button, Container, Nav, Navbar, Spinner } from "react-bootstrap";
+import { Button, Container, Nav, Navbar} from "react-bootstrap";
 import Image from "react-bootstrap/Image";
 import profilePicture from "../../../assets/anayet.jpg";
 import { Link, NavLink } from "react-router-dom";
@@ -8,9 +8,7 @@ import { FaUserTie } from "react-icons/fa";
 
 const NavigationBar = () => {
   const { user, logoutUser, loading } = useContext(AuthContext);
-
-  console.log(user);
-
+  
   const handleLogout = () => {
     logoutUser()
       .then(() => {
@@ -55,22 +53,9 @@ const NavigationBar = () => {
               >
                 Blog
               </NavLink>
-              <NavLink
-                to="/about"
-                className={({ isActive }) =>
-                  isActive
-                    ? "navlink me-md-4 mb-md-0 mb-2 text-primary"
-                    : "navlink me-md-4 mb-md-0 mb-2 text-dark"
-                }
-              >
-                Recepies
-              </NavLink>
+
             </Nav>
-            {loading ? (
-              <div className="d-flex justify-content-center align-items-center mt-5 text-primary">
-                <Spinner className="" animation="border" />
-              </div>
-            ) : user ? (
+            {user ? (
               <>
                 {!user.photoURL ? (
                   <FaUserTie className="user me-md-3" />

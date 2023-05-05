@@ -3,23 +3,25 @@ import { Card } from "react-bootstrap";
 import { FaHeart, FaRegStar, FaStar } from "react-icons/fa";
 import Rating from "react-rating";
 
-import Swal from 'sweetalert2'
-import withReactContent from 'sweetalert2-react-content'
+import Swal from "sweetalert2";
+import withReactContent from "sweetalert2-react-content";
 
 const RecipeCard = ({ recipe }) => {
-const [disableBtn, setDisableBtn] = useState(false)
+  const [disableBtn, setDisableBtn] = useState(false);
+  const { img, ingredients, method, name, rating } = recipe;
+
   const MySwal = withReactContent(Swal);
   const addFavoriteHandler = () => {
     MySwal.fire({
       title: <p>Recipe Added</p>,
-      icon: 'success'
-    })
+      icon: "success",
+      imageUrl: img,
+      imageWidth: 400,
+      imageHeight: 200,
+    });
 
     setDisableBtn(true);
-    console.log(disableBtn);
-  }
-  const { img, ingredients, method, name, rating } = recipe;
-
+  };
 
   return (
     <>
@@ -30,11 +32,11 @@ const [disableBtn, setDisableBtn] = useState(false)
       ) : (
         <></>
       )}
-      
+
       <Card>
-        <Card.Img variant="top" src={img} />
+        <Card.Img className="card-img" variant="top" src={img} />
         <Card.Body>
-          <Card.Title>{name}</Card.Title>
+          <Card.Title className="card-title">{name}</Card.Title>
           <h5>Ingradients</h5>
           <ul>
             {ingredients.map((ing, idx) => (
@@ -42,19 +44,29 @@ const [disableBtn, setDisableBtn] = useState(false)
             ))}
           </ul>
           <h5>Preparation</h5>
-          <Card.Text>{method}</Card.Text>
+          <Card.Text className="card-text">{method}</Card.Text>
         </Card.Body>
         <Card.Footer className="d-flex justify-content-between bg-primary">
           <p>
-          <Rating  
-            placeholderRating= {rating}
-            emptySymbol={<FaRegStar/>}
-            readonly
-            placeholderSymbol = {<FaStar className='text-primary'/>} 
-            fullSymbol={<FaStar/>}/>
+            <Rating
+              placeholderRating={rating}
+              emptySymbol={<FaRegStar />}
+              readonly
+              placeholderSymbol={<FaStar className="text-primary" />}
+              fullSymbol={<FaStar />}
+            />
           </p>
           <p>
-            <button onClick={addFavoriteHandler} className={disableBtn == true ? "btn btn-secondary" : "btn btn-solid-primary"}>Add to favorite <FaHeart /></button>
+            <button
+              onClick={addFavoriteHandler}
+              className={
+                disableBtn 
+                  ? "btn btn-secondary cursor-default"
+                  : "btn btn-solid-primary"
+              }
+            >
+              Add to favorite <FaHeart />
+            </button>
           </p>
         </Card.Footer>
       </Card>
