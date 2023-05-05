@@ -18,8 +18,6 @@ const FrontPage = () => {
       <Footer />
     </>
     )}
-
- 
     </>
   );
 };
