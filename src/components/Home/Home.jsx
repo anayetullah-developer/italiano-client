@@ -12,7 +12,7 @@ import {
 import { Link, useLoaderData } from "react-router-dom";
 import ChefCard from "./ChefCard";
 import LazyLoad from "react-lazy-load";
-import { FaRegPaperPlane } from "react-icons/fa";
+import { FaEnvelope, FaRegPaperPlane } from "react-icons/fa";
 
 const Home = () => {
   const chefData = useLoaderData();
@@ -178,8 +178,8 @@ const Home = () => {
               Subscribe to our newsletter & keep up with our latest recipes
             </h2>
             <Form>
-              <Form.Group className="mb-3" controlId="formGroupEmail">
-                <InputGroup className="mb-3">
+              <Form.Group className="mb-3 position-relative" controlId="formGroupEmail">
+                <InputGroup className="mb-3 position-relative">
                 <Form.Control
                   className="footer-input border-0 border-bottom outline w-75 mx-auto text-center bg-transparent border-color rounded-0"
                   type="email"
@@ -188,6 +188,7 @@ const Home = () => {
                    <FaRegPaperPlane className="text-primary fs-4 position-absolute bottom-50 end-0"/>
                 </InputGroup>
               </Form.Group>
+              <FaEnvelope className="position-absolute top-0 start-0"/>
             </Form>
             <p className="fst-italic">
               <small>Be informed about the latest recipes & workshops.</small>

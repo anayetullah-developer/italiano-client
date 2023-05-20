@@ -1,8 +1,8 @@
 import React, { useContext, useState } from "react";
 import { Button, Form } from "react-bootstrap";
 import { Link, useNavigate } from "react-router-dom";
-import { AuthContext } from "../../providers/AuthProvider";
 import { FaEye } from "react-icons/fa";
+import { AuthContext } from "../../providers/AuthProvider";
 
 const Registration = () => {
   const [email, setEmail] = useState('');
@@ -67,8 +67,6 @@ const Registration = () => {
     
   });
 
-  
-
   } 
 
 
@@ -99,7 +97,9 @@ const Registration = () => {
             type="email"
             className={Emailerror ? 'border-danger' : ''}
             required
-            onKeyDown={emailHandler}
+            value={email}
+            onChange={emailHandler}
+            onClick={emailHandler}
             name="email"
             placeholder="Enter email"
           />
@@ -112,8 +112,10 @@ const Registration = () => {
             <Form.Control
             className={PasswordError ? 'border-danger' : ''}
             type="password"
+            value={password}
             required
-            onKeyDown={passwordHandler}
+            onClick={passwordHandler}
+            onChange={passwordHandler}
             name="password"
             placeholder="Enter Password"
           /> 
