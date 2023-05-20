@@ -122,13 +122,19 @@ button {
 
 /*============ Home carousel =================*/
 
+
+.carousel-heading {
+  font-size: 60px;
+  font-weight: 75;
+  color
+  font-family: qu;
+}
 .carousel-image {
-  height: 400px;
-  mix-blend-mode: darken;
+  height: 500px;
 }
 
 .carousel-bg {
-  background-color: rgba(0, 0, 0, 0.5) !important;
+  background-color: rgba(0, 0, 0, 0.2) !important;
 }
 
 .newletter-heading {
@@ -161,3 +167,9 @@ font-family: 'Raleway', sans-serif; */
 
 /*#E35640;*/
 
+@media screen and (max-width: 576px) {
+  .carousel-image {
+    height: 500px;
+    mix-blend-mode: darken;
+  }
+}
